@@ -2,14 +2,14 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
-class WhislteHomeScreen extends StatefulWidget {
-  const WhislteHomeScreen({super.key});
+class WhistleHomeScreen extends StatefulWidget {
+  const WhistleHomeScreen({super.key});
 
   @override
-  State<WhislteHomeScreen> createState() => _WhislteHomeScreenState();
+  State<WhistleHomeScreen> createState() => _WhistleHomeScreenState();
 }
 
-class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
+class _WhistleHomeScreenState extends State<WhistleHomeScreen> {
   final AudioPlayer _audioPlayer = AudioPlayer();
   double _frequency = 1000.0;
   bool _isPlaying = false;
@@ -37,11 +37,11 @@ class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
   }
 
   String _getWhistleAssetPath(double frequency) {
-    if (frequency < 1000 && frequency >= 13800) {
-      return 'assets/Dog-whistle-sound-11.200-Hz.wav';
-    } else if (frequency < 13850 && frequency >= 14900) {
+    if (frequency < 10000) {
+      return 'assets/tracks/Dog-whistle-sound-11.200-Hz.wav';
+    } else if (frequency < 14000) {
       return 'assets/Dog-whistle-sound-12.200-Hz.wav';
-    } else if (frequency < 14950 && frequency >= 18900) {
+    } else if (frequency < 19000) {
       return 'assets/Dog-whistle-sound-16.000-Hz.wav';
     } else {
       return 'assets/Dog-whistle-sound-20.000-Hz.wav';
@@ -60,7 +60,7 @@ class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dog Whistle App'),
+        title: const Text('Dog Whistle App'),
       ),
       body: Center(
         child: Padding(
@@ -75,9 +75,9 @@ class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
                 max: 25000.0,
                 appearance: CircularSliderAppearance(
                   customWidths: CustomSliderWidths(
-                    trackWidth: 4,
-                    progressBarWidth: 10,
-                    handlerSize: 10,
+                    trackWidth: 5,
+                    progressBarWidth: 14,
+                    handlerSize: 15,
                   ),
                   customColors: CustomSliderColors(
                     trackColor: Colors.grey,
@@ -85,10 +85,13 @@ class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
                     hideShadow: true,
                   ),
                   infoProperties: InfoProperties(
-                    mainLabelStyle: TextStyle(
+                    mainLabelStyle: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                     ),
+                    modifier: (double value) {
+                      return '${value.round()} Hz';
+                    },
                   ),
                   size: 300,
                   angleRange: 360,
@@ -104,16 +107,15 @@ class _WhislteHomeScreenState extends State<WhislteHomeScreen> {
                   });
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _toggleWhistle,
-                child: Text(_isPlaying ? 'Start Whistle' : 'Stop Whistle'),
+                child: Text(_isPlaying ? 'Stop Whistle' : 'Start Whistle'),
               ),
             ],
           ),
         ),
       ),
     );
-    ;
   }
 }

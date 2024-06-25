@@ -1,5 +1,5 @@
+import 'package:dogwhislte/whislte_home_screen.dart';
 import 'package:flutter/material.dart';
-import 'whislte_home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const WhislteHomeScreen()),
+        MaterialPageRoute(builder: (context) => const WhistleHomeScreen()),
       );
     });
   }
