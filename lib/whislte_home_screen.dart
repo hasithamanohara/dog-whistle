@@ -67,11 +67,10 @@ class _WhistleHomeScreenState extends State<WhistleHomeScreen> {
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
-                color: Colors.black,
-                // image: DecorationImage(
-                //   image: AssetImage('image/backgrond.png'),
-                //   fit: BoxFit.cover,
-                // ),
+                image: DecorationImage(
+                  image: AssetImage('image/backgrond.png'),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
